@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './partials/navbar/navbar.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { SidebarComponent } from './partials/sidebar/sidebar.component';
@@ -40,7 +42,7 @@ import { ManagetaskComponent } from './components/user/managetask/managetask.com
 		UserSidebarComponent,
 		ManagetaskComponent
 	],
-	imports: [ BrowserModule, AppRoutingModule ],
+	imports: [ BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule ],
 	providers: [],
 	bootstrap: [ AppComponent ]
 })

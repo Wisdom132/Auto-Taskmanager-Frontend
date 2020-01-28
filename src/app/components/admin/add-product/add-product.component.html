@@ -1,32 +1,120 @@
-<div class="wrapper">
-    <div class="container my-4">
-        <form action="">
-            <div class="form-group">
-                <label for="productName">Product Name</label>
-                <input class="form-control" id="productName" type="text" name="name" placeholder="name">
+<section class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-right mb-3">
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
+          class="btn btn-primary"
+        >
+          Add Task
+        </button>
+      </div>
+
+      <!-- modal starts here  -->
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="form-group">
-                <label for="productCategory">Choose Category</label>
-                <select class="form-control" name="category" id="productCategory">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupFileAddon01">Upload Image</span>
-                    </div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="inputGroupFile01"
-                        aria-describedby="inputGroupFileAddon01">
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Title</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                  />
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Role</label>
+                  <select class="form-control">
+                    <option>Web developer</option>
+                    <option>Web Designer</option>
+                    <option>Project Manager</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">
+                    Add Task
+                  </button>
+                </div>
+              </form>
             </div>
-            <button type="submit" class="btn btn-dark">Save Product</button>
-        </form>
+          </div>
+        </div>
+      </div>
+      <!-- modal ends here  -->
     </div>
-</div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card p-4">
+          <table class="table table-striped table-responsive-sm">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Status</th>
+                <th scope="col">User</th>
+                <th scope="col">Role</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Hack Facebook</td>
+                <td><div class="badge badge-primary p-1">Started</div></td>
+                <td>Wisdom Ekpot</td>
+                <td>Web Development</td>
+                <td>12/12/2020</td>
+                <td>
+                  <button class="btn btn-danger btn-sm mr-2">Delete</button>
+                  <button
+                    class="btn btn-info btn-sm"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

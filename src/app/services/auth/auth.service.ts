@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService {
-	readonly baseURL: string = 'https://autotaskmanager.herokuapp.com/';
 	constructor(private http: HttpClient) {}
 	logUserIn(email, password) {
 		return this.http.post(
-			`${this.baseURL}admin/login`,
+			`${environment.baseURL}admin/login`,
 			{
 				email,
 				password

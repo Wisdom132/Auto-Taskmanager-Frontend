@@ -1,1 +1,54 @@
-<p>managestatus works!</p>
+<section class="mt-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card p-3">
+          <form (ngSubmit)="createNewStatus()">
+            <div class="form-group">
+              <label for="title">State</label>
+              <input
+                type="text"
+                placeholder="e.g Active"
+                [formControl]="name"
+                class="form-control"
+                id="title"
+              />
+            </div>
+            <div class="form-group text-right">
+              <button class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card p-4 table-responsive">
+          <table class="table table-striped ">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let status of statuses">
+                <th scope="row">1</th>
+                <td>{{ status.name }}</td>
+                <td>{{ status.createdDate | date }}</td>
+                <td>
+                  <button
+                    (click)="deleteStatus(status._id)"
+                    class="btn btn-danger btn-sm mr-2"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

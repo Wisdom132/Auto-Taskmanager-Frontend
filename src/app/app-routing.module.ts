@@ -34,6 +34,7 @@ const routes: Routes = [
 	{
 		path: 'admin',
 		component: DefaultComponent,
+
 		children: [
 			{ path: 'products', component: ProductsComponent },
 			{ path: 'users', component: UsersComponent },

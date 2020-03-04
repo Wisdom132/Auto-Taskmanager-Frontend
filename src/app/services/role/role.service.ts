@@ -11,7 +11,6 @@ export class RoleService {
 	}
 
 	createRole(data) {
-		debugger;
 		return this.http.post(`${environment.baseURL}admin/create-role`, {
 			name: data
 		});

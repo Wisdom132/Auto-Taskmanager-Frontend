@@ -21,6 +21,7 @@ import { ManagestatusComponent } from './components/admin/managestatus/managesta
 import { UserComponent } from './layout/user/user.component';
 import { UserSidebarComponent } from './partials/user-sidebar/user-sidebar.component';
 import { ManagetaskComponent } from './components/user/managetask/managetask.component';
+import { UserloginComponent } from './components/userlogin/userlogin.component';
 
 @NgModule({
 	declarations: [
@@ -40,7 +41,8 @@ import { ManagetaskComponent } from './components/user/managetask/managetask.com
 		ManagestatusComponent,
 		UserComponent,
 		UserSidebarComponent,
-		ManagetaskComponent
+		ManagetaskComponent,
+		UserloginComponent
 	],
 	imports: [ BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule ],
 	providers: [],

@@ -19,14 +19,14 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { RolesComponent } from './components/admin/roles/roles.component';
 import { AdduserComponent } from './components/admin/adduser/adduser.component';
 import { ManagestatusComponent } from './components/admin/managestatus/managestatus.component';
-
+import { UserloginComponent } from './components/userlogin/userlogin.component';
 import { AdminGuard } from './guard/admin.guard';
 
 const routes: Routes = [
 	{
 		path: '',
 		component: BlankComponent,
-		children: [ { path: '', component: LoginComponent } ]
+		children: [ { path: '', component: LoginComponent }, { path: 'user-login', component: UserloginComponent } ]
 	},
 	{
 		path: 'user',

@@ -3,13 +3,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: [ './login.component.css' ]
+	selector: 'app-userlogin',
+	templateUrl: './userlogin.component.html',
+	styleUrls: [ './userlogin.component.css' ]
 })
-export class LoginComponent implements OnInit {
+export class UserloginComponent implements OnInit {
 	loginForm = new FormGroup({
 		email: new FormControl(''),
 		password: new FormControl('')
@@ -17,13 +16,14 @@ export class LoginComponent implements OnInit {
 	constructor(private Auth: AuthService, private router: Router) {}
 
 	onSubmit() {
-		this.Auth.logAdminIn(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+		this.Auth.logUserIn(this.loginForm.value.email, this.loginForm.value.password).subscribe(
 			(data: any) => {
+				console.log(data);
 				let token = data.token;
-				let user = data.user;
+				let user = JSON.stringify(data.user);
 				localStorage.setItem('token', token);
 				localStorage.setItem('user', user);
-				this.router.navigate([ '/admin/create-task' ]);
+				this.router.navigate([ '/user' ]);
 			},
 			(err: HttpErrorResponse) => {
 				console.log({ error: err });

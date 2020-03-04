@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12 text-right mb-3">
         <button
-          (click)="(initCreate)"
+          (click)="initCreate()"
           type="button"
           data-toggle="modal"
           data-target="#exampleModalCenter"
@@ -26,7 +26,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle">
-                Modal title
+                {{ title }}
               </h5>
               <button
                 type="button"
@@ -75,20 +75,27 @@
                     class="form-control"
                   />
                 </div>
-                <div *ngIf="!edit" class="form-group">
-                  <button class="btn btn-primary" type="submit">
-                    Update User
-                  </button>
+                <div class="form-group">
+                  <div *ngIf="!edit; else showUpdate">
+                    <button
+                      (click)="createNewUser()"
+                      class="btn btn-primary"
+                      type="submit"
+                    >
+                      Add User
+                    </button>
+                  </div>
+
+                  <ng-template #showUpdate>
+                    <button
+                      (click)="updateUserData()"
+                      class="btn btn-primary"
+                      type="submit"
+                    >
+                      Update User
+                    </button>
+                  </ng-template>
                 </div>
-                <ng-template #elseblock class="form-group">
-                  <button
-                    (click)="createNewUser()"
-                    class="btn btn-primary"
-                    type="submit"
-                  >
-                    Add User
-                  </button>
-                </ng-template>
               </form>
             </div>
           </div>

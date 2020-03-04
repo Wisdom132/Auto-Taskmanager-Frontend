@@ -6,8 +6,14 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
 	constructor(private http: HttpClient) {}
-	logUserIn(email, password) {
+	logAdminIn(email, password) {
 		return this.http.post(`${environment.baseURL}admin/login`, {
+			email,
+			password
+		});
+	}
+	logUserIn(email, password) {
+		return this.http.post(`${environment.baseURL}user/login`, {
 			email,
 			password
 		});

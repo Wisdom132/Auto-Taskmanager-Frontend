@@ -14,7 +14,8 @@ export class UsersComponent implements OnInit {
 	//states
 	users = [];
 	roles = [];
-	edit:boolean = false;
+	title: string = 'Add User';
+	edit: boolean = false;
 	userForm = new FormGroup({
 		email: new FormControl(''),
 		name: new FormControl(''),
@@ -22,11 +23,12 @@ export class UsersComponent implements OnInit {
 		password: new FormControl('')
 	});
 	//states
+
 	//methods
 	initCreate() {
-		debugger;
+		this.title = 'Add User';
 		this.edit = false;
-		this.userForm.setValue({});
+		this.userForm.reset({});
 	}
 	getAllRoles() {
 		this.Role.getAllRoles().subscribe((data: any) => {
@@ -49,6 +51,7 @@ export class UsersComponent implements OnInit {
 			}
 		);
 	}
+	updateUserData() {}
 
 	deleteUser(id) {
 		this.User.removeUser(id).subscribe((data: any) => {
@@ -58,6 +61,7 @@ export class UsersComponent implements OnInit {
 	}
 
 	initUpdate(id) {
+		this.title = 'Edit User';
 		this.edit = true;
 		this.userForm.patchValue({
 			name: id.name,

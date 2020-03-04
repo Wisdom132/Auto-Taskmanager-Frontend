@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-md-12 text-right mb-3">
         <button
+          (click)="initCreate()"
           type="button"
           data-toggle="modal"
           data-target="#exampleModalCenter"
@@ -25,7 +26,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle">
-                Modal title
+                {{ title }}
               </h5>
               <button
                 type="button"
@@ -37,10 +38,11 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form [formGroup]="taskForm">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Title</label>
                   <input
+                    formControlName="title"
                     type="email"
                     class="form-control"
                     id="exampleInputEmail1"
@@ -49,15 +51,16 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Role</label>
-                  <select class="form-control">
-                    <option>Web developer</option>
-                    <option>Web Designer</option>
-                    <option>Project Manager</option>
+                  <select class="form-control" formControlName="role">
+                    <option *ngFor="let role of roles" [value]="role._id">{{
+                      role.name
+                    }}</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Description</label>
                   <textarea
+                    formControlName="description"
                     class="form-control"
                     id="exampleFormControlTextarea1"
                     rows="3"
@@ -65,9 +68,24 @@
                 </div>
 
                 <div class="form-group">
-                  <button class="btn btn-primary" type="submit">
-                    Add Task
-                  </button>
+                  <div *ngIf="!edit; else showUpdate">
+                    <button
+                      (click)="addTask()"
+                      class="btn btn-primary"
+                      type="submit"
+                    >
+                      Add Task
+                    </button>
+                  </div>
+                  <ng-template #showUpdate>
+                    <button
+                      (click)="updateTaskData()"
+                      class="btn btn-primary"
+                      type="submit"
+                    >
+                      Update User
+                    </button>
+                  </ng-template>
                 </div>
               </form>
             </div>
@@ -92,18 +110,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Hack Facebook</td>
-                <td><div class="badge badge-primary p-1">Started</div></td>
-                <td>Wisdom Ekpot</td>
-                <td>Web Development</td>
-                <td>12/12/2020</td>
+              <tr *ngFor="let task of tasks; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ task.title }}</td>
                 <td>
-                  <button class="btn btn-danger btn-sm mr-2">Delete</button>
+                  <div class="badge badge-primary p-1">{{ task.status }}</div>
+                </td>
+                <td>{{ task.user.name }}</td>
+                <td>{{ task.role.name }}</td>
+                <td>{{ task.createdDate | date }}</td>
+                <td>
+                  <button
+                    class="btn btn-danger btn-sm mr-2"
+                    (click)="deleteTask(task._id)"
+                  >
+                    Delete
+                  </button>
                   <button
                     class="btn btn-info btn-sm"
                     type="button"
+                    (click)="initUpdate(task)"
                     data-toggle="modal"
                     data-target="#exampleModalCenter"
                   >

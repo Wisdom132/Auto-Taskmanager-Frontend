@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
 	//states
 	users = [];
 	roles = [];
-	edit = false;
+	edit:boolean = false;
 	userForm = new FormGroup({
 		email: new FormControl(''),
 		name: new FormControl(''),

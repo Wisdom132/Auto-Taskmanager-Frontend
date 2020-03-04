@@ -7,13 +7,9 @@ import { environment } from '../../../environments/environment';
 export class AuthService {
 	constructor(private http: HttpClient) {}
 	logUserIn(email, password) {
-		return this.http.post(
-			`${environment.baseURL}admin/login`,
-			{
-				email,
-				password
-			},
-			{ responseType: 'text' as 'json' }
-		);
+		return this.http.post(`${environment.baseURL}admin/login`, {
+			email,
+			password
+		});
 	}
 }

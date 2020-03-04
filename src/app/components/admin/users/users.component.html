@@ -38,7 +38,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <form [formGroup]="userForm" (ngSubmit)="createNewUser()">
+              <form [formGroup]="userForm">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
                   <input
@@ -75,11 +75,20 @@
                     class="form-control"
                   />
                 </div>
-                <div class="form-group">
+                <div *ngIf="!edit" class="form-group">
                   <button class="btn btn-primary" type="submit">
-                    Add User
+                    Update User
                   </button>
                 </div>
+                <ng-template #elseblock class="form-group">
+                  <button
+                    (click)="createNewUser()"
+                    class="btn btn-primary"
+                    type="submit"
+                  >
+                    Add User
+                  </button>
+                </ng-template>
               </form>
             </div>
           </div>

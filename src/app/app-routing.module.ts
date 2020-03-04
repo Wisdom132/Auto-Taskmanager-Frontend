@@ -20,6 +20,8 @@ import { RolesComponent } from './components/admin/roles/roles.component';
 import { AdduserComponent } from './components/admin/adduser/adduser.component';
 import { ManagestatusComponent } from './components/admin/managestatus/managestatus.component';
 
+import { AdminGuard } from './guard/admin.guard';
+
 const routes: Routes = [
 	{
 		path: '',
@@ -34,7 +36,7 @@ const routes: Routes = [
 	{
 		path: 'admin',
 		component: DefaultComponent,
-
+		canActivate: [ AdminGuard ],
 		children: [
 			{ path: 'products', component: ProductsComponent },
 			{ path: 'users', component: UsersComponent },

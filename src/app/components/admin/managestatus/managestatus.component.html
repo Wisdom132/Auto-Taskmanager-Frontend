@@ -32,8 +32,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let status of statuses">
-                <th scope="row">1</th>
+              <tr *ngFor="let status of statuses; index as i">
+                <th scope="row">{{ i + 1 }}</th>
                 <td>{{ status.name }}</td>
                 <td>{{ status.createdDate | date }}</td>
                 <td>

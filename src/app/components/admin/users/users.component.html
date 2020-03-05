@@ -118,8 +118,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users">
-                <th scope="row">1</th>
+              <tr *ngFor="let user of users; index as i">
+                <th scope="row">{{ i + 1 }}</th>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.role.name }}</td>

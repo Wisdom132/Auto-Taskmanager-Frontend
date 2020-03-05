@@ -79,7 +79,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let task of tasks; index as i">
-                <th scope="row"></th>
+                <th scope="row">{{ i + 1 }}</th>
                 <td>{{ task.title }}</td>
                 <td>
                   <div class="badge badge-primary p-1">{{ task.status }}</div>

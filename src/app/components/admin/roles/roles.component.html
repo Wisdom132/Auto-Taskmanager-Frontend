@@ -32,8 +32,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let role of roles">
-                <th scope="row">1</th>
+              <tr *ngFor="let role of roles; index as i">
+                <th scope="row">{{ i + 1 }}</th>
                 <td>{{ role.name }}</td>
                 <td>{{ role.createdDate | date }}</td>
                 <td>

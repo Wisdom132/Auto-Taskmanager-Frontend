@@ -16,7 +16,8 @@ export class TaskService {
 		return this.http.post(`${environment.baseURL}admin/create-task`, {
 			title: data.title,
 			description: data.description,
-			role: data.role
+			role: data.role,
+			priority: data.priority
 		});
 	}
 	deleteTask(id) {

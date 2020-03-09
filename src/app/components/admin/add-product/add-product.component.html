@@ -58,6 +58,16 @@
                   </select>
                 </div>
                 <div class="form-group">
+                  <label for="exampleInputEmail1">Priory</label>
+                  <select class="form-control" formControlName="priority">
+                    <option
+                      *ngFor="let priority of priorities"
+                      [value]="priority._id"
+                      >{{ priority.name }}</option
+                    >
+                  </select>
+                </div>
+                <div class="form-group">
                   <label for="exampleInputEmail1">Description</label>
                   <textarea
                     formControlName="description"
@@ -122,6 +132,7 @@
                   <th scope="col">Status</th>
                   <th scope="col">User</th>
                   <th scope="col">Role</th>
+                  <th scope="col">Priority</th>
                   <th scope="col">Date</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -135,6 +146,7 @@
                   </td>
                   <td>{{ task.user.name }}</td>
                   <td>{{ task.role.name }}</td>
+                  <td>{{ task.priority.name }}</td>
                   <td>{{ task.createdDate | date }}</td>
                   <td>
                     <button

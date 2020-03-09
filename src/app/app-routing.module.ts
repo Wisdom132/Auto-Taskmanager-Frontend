@@ -20,6 +20,7 @@ import { RolesComponent } from './components/admin/roles/roles.component';
 import { AdduserComponent } from './components/admin/adduser/adduser.component';
 import { ManagestatusComponent } from './components/admin/managestatus/managestatus.component';
 import { UserloginComponent } from './components/userlogin/userlogin.component';
+import { PriorityComponent } from './components/admin/priority/priority.component';
 import { AdminGuard } from './guard/admin.guard';
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
 			{ path: 'create-task', component: AddProductComponent },
 			{ path: 'manage-role', component: RolesComponent },
 			{ path: 'add-user', component: AdduserComponent },
-			{ path: 'manage-status', component: ManagestatusComponent }
+			{ path: 'manage-status', component: ManagestatusComponent },
+			{ path: 'manage-priority', component: PriorityComponent }
 		]
 	}
 ];

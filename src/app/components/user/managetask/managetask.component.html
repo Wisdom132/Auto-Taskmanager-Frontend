@@ -1,17 +1,6 @@
 <section class="mt-3">
   <div class="container">
     <div class="row">
-      <!-- <div class="col-md-12 text-right mb-3">
-        <button
-          type="button"
-          data-toggle="modal"
-          data-target="#exampleModalCenter"
-          class="btn btn-primary"
-        >
-          Add Task
-        </button>
-      </div> -->
-
       <!-- modal starts here  -->
       <div
         class="modal fade"
@@ -79,10 +68,11 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Title</th>
+                  <th scope="col">Task</th>
                   <th scope="col">Status</th>
                   <th scope="col">User</th>
                   <th scope="col">Role</th>
+                  <th scope="col">Priority</th>
                   <th scope="col">Date Assigned</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -96,6 +86,7 @@
                   </td>
                   <td>{{ task.user.name }}</td>
                   <td>{{ task.role.name }}</td>
+                  <td>{{ task.priority.name }}</td>
                   <td>{{ task.createdDate | date }}</td>
                   <td>
                     <button

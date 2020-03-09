@@ -25,7 +25,15 @@
               />
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span
+              >Submit
+            </button>
           </form>
         </div>
       </div>

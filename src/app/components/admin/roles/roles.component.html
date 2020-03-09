@@ -15,38 +15,51 @@
               />
             </div>
             <div class="form-group text-right">
-              <button class="btn btn-primary">Add</button>
+              <button class="btn btn-primary">
+                <span
+                  *ngIf="isAdd"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span
+                >Add
+              </button>
             </div>
           </form>
         </div>
       </div>
       <div class="col-md-8 col-sm-12">
         <div class="card p-4 table-responsive">
-          <table class="table table-striped ">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let role of roles; index as i">
-                <th scope="row">{{ i + 1 }}</th>
-                <td>{{ role.name }}</td>
-                <td>{{ role.createdDate | date }}</td>
-                <td>
-                  <button
-                    (click)="removeRole(role._id)"
-                    class="btn btn-danger btn-sm mr-2"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div *ngIf="isLoading; else finished">
+            <app-loader></app-loader>
+          </div>
+          <ng-template #finished>
+            <table class="table table-striped ">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let role of roles; index as i">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ role.name }}</td>
+                  <td>{{ role.createdDate | date }}</td>
+                  <td>
+                    <button
+                      (click)="removeRole(role._id)"
+                      class="btn btn-danger btn-sm mr-2"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </ng-template>
         </div>
       </div>
     </div>

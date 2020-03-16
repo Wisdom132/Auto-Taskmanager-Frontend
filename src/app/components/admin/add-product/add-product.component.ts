@@ -106,8 +106,11 @@ export class AddProductComponent implements OnInit {
 			},
 			(err: HttpErrorResponse) => {
 				this.addLoad = false;
-				Swal.fire('Error', 'Something Went Wrong', 'error');
-				console.log(err);
+				if (err.error.message) {
+					Swal.fire('Error', err.error.message, 'error');
+				} else {
+					Swal.fire('Error', 'Something Went Wrong', 'error');
+				}
 			}
 		);
 	}

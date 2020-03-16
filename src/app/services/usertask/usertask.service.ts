@@ -12,6 +12,6 @@ export class UsertaskService {
 	}
 
 	updateTaskStatus(id, status) {
-		return this.http.put(`${environment.baseURL}user/update-task-status/${id}`, { status: status });
+		return this.http.patch(`${environment.baseURL}user/update-task-status/${id}`, { status: status });
 	}
 }

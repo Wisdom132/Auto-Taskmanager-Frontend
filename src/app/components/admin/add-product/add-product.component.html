@@ -123,55 +123,76 @@
             <app-loader></app-loader>
           </div>
 
-          <ng-template #finished>
-            <table class="table table-striped table-responsive-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Task</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Assigned Resource</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Priority</th>
-                  <th scope="col">Time Created</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let task of tasks; index as i">
-                  <th scope="row">{{ i + 1 }}</th>
-                  <td>{{ task.title }}</td>
-                  <td>
-                    <div class="badge badge-primary p-1">{{ task.status }}</div>
-                  </td>
-                  <td>{{ task.user.name }}</td>
-                  <td>{{ task.description }}</td>
-                  <td>{{ task.role.name }}</td>
-                  <td>{{ task.priority.name }}</td>
-                  <td>{{ task.createdDate | date: "h:mm:ss" }}</td>
-                  <td>{{ task.createdDate | date }}</td>
-                  <td>
-                    <button
-                      class="btn btn-danger btn-sm mr-2"
-                      (click)="deleteTask(task._id)"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      class="btn btn-info btn-sm"
-                      type="button"
-                      (click)="initUpdate(task)"
-                      data-toggle="modal"
-                      data-target="#exampleModalCenter"
-                    >
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <ng-template class="table-responsive" #finished>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Assigned Resource</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Time Created</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Completion Date</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let task of tasks; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ task.title }}</td>
+                    <td>
+                      <div class="badge badge-primary p-1">
+                        {{ task.status }}
+                      </div>
+                    </td>
+                    <td>{{ task.user.name }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.role.name }}</td>
+                    <td>{{ task.priority.name }}</td>
+                    <td>{{ task.createdDate | date: "h:mm:ss:a" }}</td>
+                    <td>{{ task.createdDate | date }}</td>
+                    <td>
+                      {{
+                        task.startDate === null
+                          ? "Yet To Start"
+                          : (task.startDate | date)
+                      }}
+                    </td>
+                    <td>
+                      {{
+                        task.completeDate === null
+                          ? "Yet To Be Completed"
+                          : (task.completeDate | date)
+                      }}
+                    </td>
+
+                    <td>
+                      <button
+                        class="btn btn-danger btn-sm mr-2"
+                        (click)="deleteTask(task._id)"
+                      >
+                        Delete
+                      </button>
+                      <button
+                        class="btn btn-info btn-sm"
+                        type="button"
+                        (click)="initUpdate(task)"
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </ng-template>
         </div>
       </div>

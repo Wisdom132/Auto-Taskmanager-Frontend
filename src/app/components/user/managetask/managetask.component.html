@@ -26,10 +26,20 @@
               </button>
             </div>
             <div class="modal-body">
-              <form (ngSubmit)="updateTaskStatus()">
+              <form [formGroup]="updateForm" (ngSubmit)="updateTaskStatus()">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Status</label>
-                  <select [formControl]="name" class="form-control">
+                  <label for="startdate">State Date</label>
+                  <input
+                    formControlName="startDate"
+                    id="startdate"
+                    type="date"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Status</label>
+                  <select formControlName="status" class="form-control">
                     <option selected disabled>Update Status</option>
                     <option
                       *ngFor="let status of allstatus"
@@ -37,6 +47,15 @@
                       >{{ status.name }}</option
                     >
                   </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Complete Date</label>
+                  <input
+                    formControlName="completeDate"
+                    type="date"
+                    class="form-control"
+                  />
                 </div>
 
                 <div class="form-group">
@@ -75,6 +94,10 @@
                   <th scope="col">Description</th>
                   <th scope="col">Priority</th>
                   <th scope="col">Date Assigned</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">Start Time</th>
+                  <th scope="col">Complete Date</th>
+                  <th scope="col">Complete Time</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -90,6 +113,34 @@
                   <td>{{ task.description }}</td>
                   <td>{{ task.priority.name }}</td>
                   <td>{{ task.createdDate | date }}</td>
+                  <td>
+                    {{
+                      task.startDate === null
+                        ? "Yet To Start"
+                        : (task.startDate | date)
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      task.startDate === null
+                        ? "Yet To Be Completed"
+                        : (task.startDate | date: "h:mm:ss:a")
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      task.completeDate === null
+                        ? "Yet To Be Completed"
+                        : (task.completeDate | date)
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      task.completeDate === null
+                        ? "Yet To Be Completed"
+                        : (task.completeDate | date: "h:mm:ss:a")
+                    }}
+                  </td>
                   <td>
                     <button
                       class="btn btn-info btn-sm"

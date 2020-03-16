@@ -18,6 +18,11 @@ export class UserService {
 			password: data.password
 		});
 	}
+	updateUser(id, data) {
+		return this.http.put(`${environment.baseURL}admin/user/${id}`, {
+			data
+		});
+	}
 
 	removeUser(id) {
 		return this.http.delete(`${environment.baseURL}admin/remove-user/${id}`);

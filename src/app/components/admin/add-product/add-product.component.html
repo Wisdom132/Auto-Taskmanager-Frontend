@@ -133,6 +133,7 @@
                   <th scope="col">Assigned Resource</th>
                   <th scope="col">Role</th>
                   <th scope="col">Priority</th>
+                  <th scope="col">Time Created</th>
                   <th scope="col">Date</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -147,6 +148,7 @@
                   <td>{{ task.user.name }}</td>
                   <td>{{ task.role.name }}</td>
                   <td>{{ task.priority.name }}</td>
+                  <td>{{ task.createdDate | date: "h:mm:ss" }}</td>
                   <td>{{ task.createdDate | date }}</td>
                   <td>
                     <button

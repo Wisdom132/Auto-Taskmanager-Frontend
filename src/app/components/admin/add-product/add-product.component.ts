@@ -40,11 +40,8 @@ export class AddProductComponent implements OnInit {
 		this.title = 'Edit Task';
 		this.edit = true;
 		this.dataToUpdate = id;
-		this.taskForm.patchValue({
-			title: id.title,
-			role: id.role,
-			description: id.description
-		});
+		this.taskForm.patchValue(id);
+
 		console.log(id.role._id);
 	}
 	updateTaskData() {
@@ -53,7 +50,7 @@ export class AddProductComponent implements OnInit {
 			(data: any) => {
 				Swal.fire('Success', 'Task Updated', 'success');
 				this.updateLoad = false;
-
+				this.getAllTask();
 				console.log(data);
 			},
 			(err: HttpErrorResponse) => {

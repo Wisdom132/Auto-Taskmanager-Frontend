@@ -82,11 +82,6 @@ export class UsersComponent implements OnInit {
 		this.edit = true;
 		this.userForm.patchValue(id);
 		this.isEditId = id._id;
-		// this.userForm.patchValue({
-		// 	name: id.name,
-		// 	email: id.email,
-		// 	role: id.role._id
-		// });
 		console.log(id);
 	}
 	updateUserData() {
@@ -94,13 +89,21 @@ export class UsersComponent implements OnInit {
 		let data = {
 			email: this.userForm.value.email,
 			name: this.userForm.value.name,
-			role: this.userForm.value.role._id
+			role: this.userForm.value.role
 		};
-		this.User.updateUser(this.isEditId, data).subscribe((data: any) => {
-			console.log(data);
-			this.getAllUsers();
-			this.isEdit = false;
-		});
+		this.User.updateUser(this.isEditId, data).subscribe(
+			(data: any) => {
+				console.log(data);
+				Swal.fire('Success', 'User Info Updated', 'success');
+				this.getAllUsers();
+				this.isEdit = false;
+			},
+			(err: HttpErrorResponse) => {
+				console.log(err);
+				this.isEdit = false;
+				Swal.fire('Error', 'Something Went Wromg', 'error');
+			}
+		);
 	}
 	//methods
 	ngOnInit() {

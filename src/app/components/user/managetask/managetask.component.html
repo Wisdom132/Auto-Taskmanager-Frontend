@@ -72,6 +72,7 @@
                   <th scope="col">Status</th>
                   <th scope="col">User</th>
                   <th scope="col">Role</th>
+                  <th scope="col">Description</th>
                   <th scope="col">Priority</th>
                   <th scope="col">Date Assigned</th>
                   <th scope="col">Action</th>
@@ -86,6 +87,7 @@
                   </td>
                   <td>{{ task.user.name }}</td>
                   <td>{{ task.role.name }}</td>
+                  <td>{{ task.description }}</td>
                   <td>{{ task.priority.name }}</td>
                   <td>{{ task.createdDate | date }}</td>
                   <td>

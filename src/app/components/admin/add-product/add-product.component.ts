@@ -74,7 +74,7 @@ export class AddProductComponent implements OnInit {
 	getAllTask() {
 		this.isLoad = true;
 		this.Task.getAllTask().subscribe((data: any) => {
-			this.tasks = data;
+			this.tasks = data.reverse();
 			this.isLoad = false;
 		});
 	}

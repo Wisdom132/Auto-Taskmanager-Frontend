@@ -36,7 +36,7 @@ export class ManagetaskComponent implements OnInit {
 		this.isLoading = true;
 		let userId = JSON.parse(localStorage.getItem('user'));
 		this.task.getTasksAssignedToUser(userId._id).subscribe((data: any) => {
-			this.tasks = data.tasks;
+			this.tasks = data.tasks.reverse();
 			this.isLoading = false;
 		});
 	}

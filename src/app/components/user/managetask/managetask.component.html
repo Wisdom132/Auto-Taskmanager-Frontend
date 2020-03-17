@@ -32,7 +32,7 @@
                   <input
                     formControlName="startDate"
                     id="startdate"
-                    type="date"
+                    type="datetime-local"
                     class="form-control"
                   />
                 </div>
@@ -53,7 +53,7 @@
                   <label>Complete Date</label>
                   <input
                     formControlName="completeDate"
-                    type="date"
+                    type="datetime-local"
                     class="form-control"
                   />
                 </div>
@@ -124,7 +124,7 @@
                     {{
                       task.startDate === null
                         ? "Yet To Be Completed"
-                        : (task.startDate | date: "h:mm:ss:a")
+                        : (task.startDate | date: "h:mm:ss:a":"GMT+1")
                     }}
                   </td>
                   <td>
@@ -138,7 +138,7 @@
                     {{
                       task.completeDate === null
                         ? "Yet To Be Completed"
-                        : (task.completeDate | date: "h:mm:ss:a")
+                        : (task.completeDate | date: "h:mm:ss:a":"GMT+1")
                     }}
                   </td>
                   <td>

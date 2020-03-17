@@ -138,7 +138,9 @@
                     <th scope="col">Time Created</th>
                     <th scope="col">Date Created</th>
                     <th scope="col">Start Date</th>
-                    <th scope="col">Completion Date</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">Complete Date</th>
+                    <th scope="col">Complete Time</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -166,11 +168,39 @@
                     </td>
                     <td>
                       {{
+                        task.startDate === null
+                          ? "Yet To Be Completed"
+                          : (task.startDate | date: "h:mm:ss:a":"GMT+1")
+                      }}
+                    </td>
+                    <td>
+                      {{
                         task.completeDate === null
                           ? "Yet To Be Completed"
                           : (task.completeDate | date)
                       }}
                     </td>
+                    <td>
+                      {{
+                        task.completeDate === null
+                          ? "Yet To Be Completed"
+                          : (task.completeDate | date: "h:mm:ss:a":"GMT+1")
+                      }}
+                    </td>
+                    <!-- <td>
+                      {{
+                        task.startDate === null
+                          ? "Yet To Start"
+                          : (task.startDate | date)
+                      }}
+                    </td>
+                    <td>
+                      {{
+                        task.completeDate === null
+                          ? "Yet To Be Completed"
+                          : (task.completeDate | date)
+                      }}
+                    </td> -->
 
                     <td>
                       <button
